@@ -54,6 +54,8 @@ docker build -t ironcore864/exchange-rate-data-for-one-month .
 docker push ironcore864/exchange-rate-data-for-one-month
 ```
 
+Image is pushed here: https://cloud.docker.com/u/ironcore864/repository/docker/ironcore864/exchange-rate-data-for-one-month
+
 ## Test Docker Image Locally without K8s
 
 ```
