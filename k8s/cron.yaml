@@ -1,0 +1,24 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: exchange-rate-data-for-one-month 
+spec:
+  schedule: "0 1 * * * "
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: exchange-rate-data-for-one-month 
+            image: ironcore864/exchange-rate-data-for-one-month
+            env:
+            - name: RedisHost
+              value: 'redis-master'
+            - name: RedisPort 
+              value: '6379'
+            - name: RedisPassword
+              valueFrom:
+                secretKeyRef:
+                  name: redis
+                  key: redis-password
+          restartPolicy: OnFailure

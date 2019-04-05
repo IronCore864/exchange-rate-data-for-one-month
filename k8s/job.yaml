@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: exchange-rate
+spec:
+  template:
+    spec:
+      containers:
+      - name: exchange-rate
+        image: ironcore864/exchange-rate-data-for-one-month:latest
+        env:
+        - name: RedisHost
+          value: 'redis-master'
+        - name: RedisPort
+          value: '6379'
+        - name: RedisPassword
+          valueFrom:
+            secretKeyRef:
+              name: redis
+              key: redis-password
+      restartPolicy: Never
+  backoffLimit: 1 
