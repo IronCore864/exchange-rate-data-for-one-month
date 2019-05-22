@@ -16,9 +16,7 @@ func main() {
 	netClient := &http.Client{
 		Timeout: time.Second * 1,
 	}
-	// here the url should be /latest
-	// but at the moment it does not work, so I changed to /2019-04-05
-	url := "https://api.exchangeratesapi.io/2019-04-05"
+	url := "https://api.exchangeratesapi.io/latest/"
 
 	res, err := netClient.Get(url)
 	if err != nil {
