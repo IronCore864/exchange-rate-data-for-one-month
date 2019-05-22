@@ -1,4 +1,4 @@
-# Tiexin's Solutoin to Exchange Rate
+# Exchange Rate Job to Store for up to a Month
 
 ## Language
 
@@ -105,11 +105,3 @@ kubectl run --namespace default redis-client --rm --tty -i --restart='Never' --e
 # in the pod
 redis-cli -h redis-master -a $REDIS_PASSWORD
 ```
-
-## Notes
-
-- at the moment (13:32, 05.04.2019), https://api.exchangeratesapi.io/latest does not work for me (maybe because I accessed so many times, maybe it's down), so I changed the url to https://api.exchangeratesapi.io/2019-04-05.
-- the task asks to access https://api.exchangeratesapi.io/latest only; in fact there is another approach which is by changing the URL so access 30 days' data in one run and store it. Didn't use this method becuase it seems this is not what the task wants.
-- cron is configured in the midnight so that it makes a minimum impact on the cluster performance. I didn't test the cron.yaml becuase I don't want to wait till tomorrow.
-- I merged both config.json (used when testing locally without docker and no need to set env) and env vars (for docker/k8s usage)
-
